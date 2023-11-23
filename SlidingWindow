@@ -1,0 +1,19 @@
+def SlidingWindow(arr,k):
+    arraySize=len(arr)
+    if arraySize<=k:
+        print("Invalid Operation")
+        return -1 
+    
+    windowSum=sum(arr[i] for i in range(k))
+    maxSum=windowSum
+    
+    for i in range(arraySize-k):
+        windowSum=windowSum-arr[i]+arr[i+k]
+        maxSum=max(windowSum,maxSum)
+    return maxSum
+    
+    
+arr=[80,-50,90,100]
+k=2
+result=SlidingWindow(arr,k)
+print(result)
