@@ -1,0 +1,22 @@
+from typing import List
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        people.sort()
+        l=0
+        boat=0
+        r=len(people)-1
+        while(l<=r):
+            if l==r:
+                boat+=1
+                break
+            if (people[l] + people[r]) <= limit:
+                l+=1
+                r-=1
+                boat+=1
+            else:
+                r-=1
+                boat+=1
+        print(boat)
+        
+s=Solution()
+s.numRescueBoats([3,2,2,1],3)
