@@ -1,0 +1,22 @@
+class Solution:
+    def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
+        new_list = []
+        # Flatten the 2D grid into a 1D list
+        for i in grid:
+            for j in i:
+                new_list.append(j)
+        
+        # Use set to find the missing value and duplicate value
+        unique_values = set()
+        duplicate_element = None
+        for element in new_list:
+            if element in unique_values:
+                duplicate_element = element
+            unique_values.add(element)
+
+        # Calculate the missing value using the sum of the first n natural numbers
+        n = len(grid) * len(grid)
+        actual_sum = (n * (n + 1)) // 2
+        missing_value = actual_sum - sum(unique_values)
+
+        return [duplicate_element, missing_value]
