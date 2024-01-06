@@ -1,0 +1,23 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        n=len(nums)
+        l,r=0,n-1
+        while l<r:
+            m=(l+r)//2
+            if nums[m]>nums[r]:
+                l=m+1
+            else:
+                r=m
+        pivot=l
+        l,r=0,n-1
+        while l<=r:
+            m=(l+r)//2
+            m1=(m+pivot)%n
+            if nums[m1]==target:
+                return m1
+            elif nums[m1]<target:
+                l=m+1
+            else:
+                r=m-1
+        return -1
+        
