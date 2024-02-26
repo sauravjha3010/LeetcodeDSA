@@ -1,6 +1,17 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
+        x1,x2=nums[0],0
+        for i in range(1,len(nums)):
+            x1 ^= nums[i]
+        for i in range(1,len(nums)+1): #as one missing value so n+1 i.e till n 
+            x2 ^= i
+        return x1 ^ x2
+
+
+brute force 
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
         total=sum(nums)
         n=len(nums)
-        actual=(n*(n+1))/2
+        actual=(n*(n+1))/2  #here if the length exceed integer length it will be problem as it is n* n+1
         return int(actual-total)
