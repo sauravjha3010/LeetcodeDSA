@@ -1,4 +1,11 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
+        ans=0
+        for i in range(len(nums)):
+            ans ^= nums[i]
+        return ans
+        
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
         return 2*sum(set(nums))-sum(nums)
         
